@@ -1,0 +1,2 @@
+DELETE http://localhost:8090/api/v1/notes/deleteNote?userId=14399290-7133-4aba-a14a-40a1a840250f&
+  noteId=49dd885d-e458-4298-ad36-923534002cb3

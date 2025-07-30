@@ -1,0 +1,8 @@
+PUT http://localhost:8090/api/v1/notes/editNote?userId=14399290-7133-4aba-a14a-40a1a840250f&
+  noteId=19efe8a7-3087-4e1d-aba5-01245c6e079c
+Content-Type: application/json
+
+{
+  "title": "Test note 6 edited",
+  "body": "This is edited test note 6."
+}
