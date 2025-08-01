@@ -60,6 +60,8 @@ public class UserController {
 
       String token = jwtUtils.generateToken(user.getUserId());
       ResponseCookie cookie = ResponseCookie.from("token", token)
+          .sameSite("Lax")
+          .maxAge(360000) // 10 hours
           .httpOnly(true)
           .secure(true)
           .path("/")
