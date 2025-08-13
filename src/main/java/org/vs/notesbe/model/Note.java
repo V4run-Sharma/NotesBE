@@ -16,25 +16,25 @@ import java.util.UUID;
 @Table(name = "notes")
 public class Note {
 
-  @Id
-  @GeneratedValue
-  @Column(name = "n_id", nullable = false, unique = true)
-  private UUID noteId;
+    @Id
+    @GeneratedValue
+    @Column(name = "n_id", nullable = false, unique = true)
+    private UUID noteId;
 
-  @Column(name = "u_id", nullable = false)
-  private UUID userId;
+    @Column(name = "u_id", nullable = false)
+    private UUID userId;
 
-  @Column(name = "title", nullable = false)
-  private String title;
+    @Column(name = "title", nullable = false)
+    private String title;
 
-  @Column(name = "body", nullable = false)
-  private String body;
+    @Column(name = "body", nullable = false)
+    private String body;
 
-  @CreationTimestamp
-  @Column(name = "created_at", nullable = false, updatable = false)
-  private String createdAt;
+    @CreationTimestamp
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private String createdAt;
 
-  @UpdateTimestamp
-  @Column(name = "updated_at", nullable = false)
-  private String updatedAt;
+    @UpdateTimestamp
+    @Column(name = "updated_at", nullable = false)
+    private String updatedAt;
 }

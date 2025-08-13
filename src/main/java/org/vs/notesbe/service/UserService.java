@@ -14,52 +14,52 @@ import org.vs.notesbe.repository.UserRepo;
 @Service
 public class UserService {
 
-  private static final Logger log = LoggerFactory.getLogger(UserService.class);
+    private static final Logger log = LoggerFactory.getLogger(UserService.class);
 
-  private final UserRepo userRepo;
-  private final PasswordEncoder passwordEncoder;
+    private final UserRepo userRepo;
+    private final PasswordEncoder passwordEncoder;
 
-  public UserService(UserRepo userRepo, PasswordEncoder passwordEncoder) {
-    this.userRepo = userRepo;
-    this.passwordEncoder = passwordEncoder;
-  }
-
-  public User signup(UserSignUpRequestDto requestDto) {
-    if (userRepo.findByEmail(requestDto.getEmail()) != null) {
-      log.error("USER_SERVICE - SIGNUP ::: Signup failed: User already exists with email {}", requestDto.getEmail());
-      throw new SignupException("User already exists");
-    }
-    if (userRepo.findByUserName(requestDto.getUserName()) != null) {
-      log.error("USER_SERVICE - SIGNUP ::: Signup failed: User already exists with username {}", requestDto.getUserName());
-      throw new SignupException("User already exists");
+    public UserService(UserRepo userRepo, PasswordEncoder passwordEncoder) {
+        this.userRepo = userRepo;
+        this.passwordEncoder = passwordEncoder;
     }
 
-    User user = new User();
-    user.setUserName(requestDto.getUserName());
-    user.setPassword(passwordEncoder.encode(requestDto.getPassword()));
-    user.setEmail(requestDto.getEmail());
+    public User signup(UserSignUpRequestDto requestDto) {
+        if (userRepo.findByEmail(requestDto.getEmail()) != null) {
+            log.error("USER_SERVICE - SIGNUP ::: Signup failed: User already exists with email {}", requestDto.getEmail());
+            throw new SignupException("User already exists");
+        }
+        if (userRepo.findByUserName(requestDto.getUserName()) != null) {
+            log.error("USER_SERVICE - SIGNUP ::: Signup failed: User already exists with username {}", requestDto.getUserName());
+            throw new SignupException("User already exists");
+        }
 
-    userRepo.save(user);
+        User user = new User();
+        user.setUserName(requestDto.getUserName());
+        user.setPassword(passwordEncoder.encode(requestDto.getPassword()));
+        user.setEmail(requestDto.getEmail());
 
-    log.info("USER_SERVICE - SIGNUP ::: User {} signed up successfully", user.getUserName());
+        userRepo.save(user);
 
-    return user;
-  }
+        log.info("USER_SERVICE - SIGNUP ::: User {} signed up successfully", user.getUserName());
 
-  public User signin(UserSignInRequestDto requestDto) {
-    User user = userRepo.findByUserName(requestDto.getUserName());
-    if (user == null) {
-      log.error("USER_SERVICE - SIGNIN ::: Signin failed: Invalid username or password for user {}", requestDto.getUserName());
-      throw new SigninException("Invalid username or password");
-    }
-    boolean passwordMatches = passwordEncoder.matches(requestDto.getPassword(), user.getPassword());
-    if (!passwordMatches) {
-      log.error("USER_SERVICE - SIGNIN ::: Signin failed: Invalid username or password for user {}", requestDto.getUserName());
-      throw new SigninException("Invalid username or password");
+        return user;
     }
 
-    log.info("USER_SERVICE - SIGNIN ::: User {} signed in successfully", user.getUserName());
+    public User signin(UserSignInRequestDto requestDto) {
+        User user = userRepo.findByUserName(requestDto.getUserName());
+        if (user == null) {
+            log.error("USER_SERVICE - SIGNIN ::: Signin failed: Invalid username or password for user {}", requestDto.getUserName());
+            throw new SigninException("Invalid username or password");
+        }
+        boolean passwordMatches = passwordEncoder.matches(requestDto.getPassword(), user.getPassword());
+        if (!passwordMatches) {
+            log.error("USER_SERVICE - SIGNIN ::: Signin failed: Invalid username or password for user {}", requestDto.getUserName());
+            throw new SigninException("Invalid username or password");
+        }
 
-    return user;
-  }
+        log.info("USER_SERVICE - SIGNIN ::: User {} signed in successfully", user.getUserName());
+
+        return user;
+    }
 }

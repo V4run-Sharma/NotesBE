@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface NoteRepo extends JpaRepository<Note, String> {
-  List<Note> findAllByUserId(UUID userId);
+    List<Note> findAllByUserId(UUID userId);
 
-  Optional<Note> findByUserIdAndNoteId(UUID userId, UUID noteId);
+    Optional<Note> findByUserIdAndNoteId(UUID userId, UUID noteId);
 }

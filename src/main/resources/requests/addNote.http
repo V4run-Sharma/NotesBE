@@ -2,6 +2,6 @@ POST http://localhost:8090/api/v1/notes/addNote?userId=09ea5f65-6b3f-428a-801a-2
 Content-Type: application/json
 
 {
-  "title": "Test note 6",
-  "body": "This is a test note 6."
+    "title": "Test note 6",
+    "body": "This is a test note 6."
 }

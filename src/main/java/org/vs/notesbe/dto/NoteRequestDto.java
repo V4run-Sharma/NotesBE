@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class NoteRequestDto {
-  private String title;
-  private String body;
+    private String title;
+    private String body;
 }

@@ -2,7 +2,7 @@ POST http://localhost:8090/api/v1/notes/deleteMultipleNotes?userId=14399290-7133
 Content-Type: application/json
 
 {
-  "noteIds": [
-    "d1a3cbcf-9cb4-4314-a493-66f44256c6ef"
-  ]
+    "noteIds": [
+        "d1a3cbcf-9cb4-4314-a493-66f44256c6ef"
+    ]
 }

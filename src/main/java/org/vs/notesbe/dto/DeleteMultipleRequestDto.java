@@ -7,5 +7,5 @@ import java.util.UUID;
 
 @Data
 public class DeleteMultipleRequestDto {
-  private List<UUID> noteIds;
+    private List<UUID> noteIds;
 }

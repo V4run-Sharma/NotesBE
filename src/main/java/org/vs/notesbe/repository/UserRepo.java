@@ -6,7 +6,7 @@ import org.vs.notesbe.model.User;
 import java.util.UUID;
 
 public interface UserRepo extends JpaRepository<User, UUID> {
-  User findByUserName(String userName);
+    User findByUserName(String userName);
 
-  User findByEmail(String email);
+    User findByEmail(String email);
 }

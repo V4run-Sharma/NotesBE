@@ -16,36 +16,36 @@ import java.util.UUID;
 @Table(name = "users")
 public class User {
 
-  @Id
-  @GeneratedValue
-  @Column(name = "u_id", nullable = false, unique = true)
-  private UUID userId;
+    @Id
+    @GeneratedValue
+    @Column(name = "u_id", nullable = false, unique = true)
+    private UUID userId;
 
-  @Column(name = "user_name", nullable = false)
-  private String userName;
+    @Column(name = "user_name", nullable = false)
+    private String userName;
 
-  @Column(name = "email", nullable = false, unique = true)
-  private String email;
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
 
-  @Column(name = "password", nullable = false)
-  private String password;
+    @Column(name = "password", nullable = false)
+    private String password;
 
-  @CreationTimestamp
-  @Column(name = "created_at", nullable = false, updatable = false)
-  private String createdAt;
+    @CreationTimestamp
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private String createdAt;
 
-  @UpdateTimestamp
-  @Column(name = "updated_at", nullable = false)
-  private String updatedAt;
+    @UpdateTimestamp
+    @Column(name = "updated_at", nullable = false)
+    private String updatedAt;
 
-  @Override
-  public String toString() {
-    return "User{" +
-        "userId=" + userId +
-        ", userName='" + userName + '\'' +
-        ", email='" + email + '\'' +
-        ", createdAt='" + createdAt + '\'' +
-        ", updatedAt='" + updatedAt + '\'' +
-        '}';
-  }
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                ", createdAt='" + createdAt + '\'' +
+                ", updatedAt='" + updatedAt + '\'' +
+                '}';
+    }
 }
